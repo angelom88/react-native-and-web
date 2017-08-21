@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import {
-    Text, TextInput,
-    View, Button, Dimensions
-} from 'react-native';
-
-let { totalHeight } = Dimensions.get('window');
-
+    Text, TextInput, ScrollView,
+    View, Button
+} from 'react-native'
 
 class AddToDo extends Component {
     constructor(props) {
@@ -42,20 +39,20 @@ class AddToDo extends Component {
 }
 
 const ShowToDos = ({ toDos, onClick }) =>
-    <View style={{ height: totalHeight, padding: 5}}>{toDos.map(item =>
-        <Text style={{ height: 40, backgroundColor: 'green', margin: 10, padding: 10}} key={item.id} onPress={() => onClick(item.id)}>{item.text}</Text>
-    )}</View>
+    <ScrollView style={{ height: 550 }}>{toDos.map(item =>
+        <Text style={{ height: 40, backgroundColor: item.completed ? 'red' : 'green', margin: 10, padding: 10 }} key={item.id} onPress={() => onClick(item.id)}>{item.text}</Text>
+    )}</ScrollView>
 
 const Footer = ({ selectedFilter, onFilterChange }) =>
     <View style={{
         flexDirection: 'row',
-        justifyContent: 'center',
-        marginBottom: 20,
-        height: 20
+        justifyContent: 'flex-start',
+        margin: 10,
+        height: 30
     }}>{['All', 'Active', 'Complete'].map(item => {
-        let link = {};
+        let link = { style: { flex: 1, fontWeight: 'bold' } };
         if (item !== selectedFilter) {
-            link = { style: {fontWeight: 'bold', color: 'blue' }, onPress: () => onFilterChange(item) }
+            link = { style: { fontWeight: 'bold', color: 'blue', flex: 1 }, onPress: () => onFilterChange(item) }
         }
         return <Text key={item} {...link}> {item} </Text>
     }
