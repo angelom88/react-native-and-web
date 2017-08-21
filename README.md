@@ -1,15 +1,15 @@
 # install all dependencies:
-npm install
+* npm install
 # start ios
-react-native run-ios
+* react-native run-ios
 # reload ios
-In simulator, Press COMMAND + D -> Select 'Reload'
+* In simulator, Press COMMAND + D -> Select 'Reload'
 # start web
-npm run web_start
+* npm run web_start
 # start android
-react-native run-android
+* react-native run-android
 # reload android
-In simulator, Press COMMAND + M -> Select 'Reload'
+* In simulator, Press COMMAND + M -> Select 'Reload'
 ---------------------------------------------
 # package.json Create order:
 
