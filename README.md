@@ -1,3 +1,16 @@
+# install all dependencies:
+npm install
+# start ios
+react-native run-ios
+# reload ios
+In simulator, Press COMMAND + D -> Select 'Reload'
+# start web
+npm run web_start
+# start android
+react-native run-android
+# reload android
+In simulator, Press COMMAND + M -> Select 'Reload'
+---------------------------------------------
 # package.json Create order:
 
 # 1. install react native 
