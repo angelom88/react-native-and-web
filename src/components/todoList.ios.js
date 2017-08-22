@@ -35,7 +35,7 @@ class AddToDo extends Component {
 
 const ShowToDos = ({ toDos, onClick }) =>
     <ScrollView style={styles.body}>{toDos.map(item =>
-        <Text style={[styles.todoItem, { backgroundColor: item.completed ? 'red' : 'green' }]} key={item.id} onPress={() => onClick(item.id)}>{item.text}</Text>
+        [<Text style={[styles.todoItem, item.completed && styles.completeItem]} key={item.id} onPress={() => onClick(item.id)}>{item.text}</Text>,<View style={styles.hr}/>]
     )}</ScrollView>
 
 const Footer = ({ selectedFilter, onFilterChange }) =>
@@ -47,7 +47,5 @@ const Footer = ({ selectedFilter, onFilterChange }) =>
         return <Text key={item} {...link}> {item} </Text>
     }
     )}</View>
-
-
 
 export default { AddToDo, ShowToDos, Footer }
