@@ -4,6 +4,8 @@ import {
     View, Button
 } from 'react-native'
 
+import styles from '../styles/todoList.native.js';
+
 class AddToDo extends Component {
     constructor(props) {
         super(props);
@@ -21,15 +23,8 @@ class AddToDo extends Component {
     }
 
     render() {
-        return <View>
-            <TextInput style={{
-                height: 50,
-                margin: 5,
-                marginTop: 20,
-                padding: 5,
-                borderWidth: 1,
-                borderColor: '#CCCCCC'
-            }}
+        return <View style={styles.header}>
+            <TextInput style={styles.textInput}
                 value={this.state.value}
                 onChangeText={this.onText}
                 onSubmitEditing={this.onSummit}
@@ -39,24 +34,20 @@ class AddToDo extends Component {
 }
 
 const ShowToDos = ({ toDos, onClick }) =>
-    <ScrollView style={{ height: 550 }}>{toDos.map(item =>
-        <Text style={{ height: 40, backgroundColor: item.completed ? 'red' : 'green', margin: 10, padding: 10 }} key={item.id} onPress={() => onClick(item.id)}>{item.text}</Text>
+    <ScrollView style={styles.body}>{toDos.map(item =>
+        <Text style={[styles.todoItem, { backgroundColor: item.completed ? 'red' : 'green' }]} key={item.id} onPress={() => onClick(item.id)}>{item.text}</Text>
     )}</ScrollView>
 
 const Footer = ({ selectedFilter, onFilterChange }) =>
-    <View style={{
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-        margin: 10,
-        height: 30
-    }}>{['All', 'Active', 'Complete'].map(item => {
-        let link = { style: { flex: 1, fontWeight: 'bold' } };
+    <View style={styles.footer}>{['All', 'Active', 'Complete'].map(item => {
+        let link = { style: styles.selectedLink };
         if (item !== selectedFilter) {
-            link = { style: { fontWeight: 'bold', color: 'blue', flex: 1 }, onPress: () => onFilterChange(item) }
+            link = { style: [link.style, styles.unselectedLink], onPress: () => onFilterChange(item) }
         }
         return <Text key={item} {...link}> {item} </Text>
     }
     )}</View>
+
 
 
 export default { AddToDo, ShowToDos, Footer }

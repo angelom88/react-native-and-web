@@ -1,5 +1,5 @@
 import React from 'react';
-import './web.css';
+import '../styles/todoList.css';
 
 const AddToDo = ({ onAddToDo }) => <div><input ref={input => this.newTodoInput = input} /><button onClick={() => {
     onAddToDo(this.newTodoInput.value); this.newTodoInput.value='';}}>Add Todo </button> </div>
