@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
     Text, TextInput, ScrollView,
     View, Button
@@ -25,6 +25,7 @@ class AddToDo extends Component {
     render() {
         return <View style={styles.header}>
             <TextInput style={styles.textInput}
+                returnKeyType='done'
                 value={this.state.value}
                 onChangeText={this.onText}
                 onSubmitEditing={this.onSummit}
@@ -35,7 +36,7 @@ class AddToDo extends Component {
 
 const ShowToDos = ({ toDos, onClick }) =>
     <ScrollView style={styles.body}>{toDos.map(item =>
-        [<Text style={[styles.todoItem, item.completed && styles.completeItem]} key={item.id} onPress={() => onClick(item.id)}>{item.text}</Text>,<View style={styles.hr}/>]
+        [<Text style={[styles.todoItem, item.completed && styles.completeItem]} key={item.id} onPress={() => onClick(item.id)}>{item.text}</Text>, <View style={styles.hr} />]
     )}</ScrollView>
 
 const Footer = ({ selectedFilter, onFilterChange }) =>
