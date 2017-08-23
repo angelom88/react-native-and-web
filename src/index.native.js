@@ -6,8 +6,7 @@ import store from './stores/todoList';
 import styles from './styles/todoList.native.js';
 import { AppRegistry, View } from 'react-native';
 
-
-export default class ReactNativeWeb extends Component {
+class ReactNativeWeb extends Component {
   render() {
     return (
       <Provider store={store}>
